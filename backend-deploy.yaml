@@ -19,19 +19,18 @@ spec:
       app.kubernetes.io/component: backend
       app.kubernetes.io/managed: manual
   template:
-  metadata:
-    app.kubernetes.io/name: backend-microservice
-    app.kubernetes.io/instance: dev
-    app.kubernetes.io/version: "1.0.0"
-    app.kubernetes.io/component: backend
-  spec:
-    containers:
-    - name: backend
-    image: hashicorp/http-echo
-    args:
-    - "-text=hi this is rakesh"
-    ports:
-    - containerPort: 5678
----
-
-
+    metadata:
+      labels:
+        app.kubernetes.io/name: backend-microservice
+        app.kubernetes.io/instance: dev
+        app.kubernetes.io/version: "1.0.0"
+        app.kubernetes.io/component: backend
+        app.kubernetes.io/managed: manual
+    spec:
+      containers:
+      - name: backend
+      image: hashicorp/http-echo
+      args:
+      - "-text=hi this is rakesh"
+      ports:
+      - containerPort: 5678
