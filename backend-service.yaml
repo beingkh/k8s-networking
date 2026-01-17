@@ -7,16 +7,17 @@ metadata:
     app.kubernetes.io/name: backend-microservice
     app.kubernetes.io/instance: dev
     app.kubernetes.io/version: "1.0.0"
-    app.kubernetes.io/component: service
+    app.kubernetes.io/component: backend
     app.kubernetes.io/managed: manual
 spec:
+  type: ClusterIP
   selector:
-    app.kubernetes.io/component: service
     app.kubernetes.io/name: backend-microservice
     app.kubernetes.io/instance: dev
     app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/managed: manual
   ports:
-  - port: 80
-  targetPort: 5678
----
-
+  - name: http
+    port: 80
+    targetPort: 5678
